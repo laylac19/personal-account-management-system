@@ -1,0 +1,73 @@
+<div class="p-card">
+  <p-table (onLazyLoad)="uptadeData($event)"
+           [columns]="cols"
+           [lazy]="true"
+           [paginator]="true"
+           [rowsPerPageOptions]="rowsPerPage"
+           [rows]="rowsPerPage[0]"
+           [showLoader]="loader"
+           [tableStyle]="{ 'min-width': '50rem' }"
+           [totalRecords]="data.content.length"
+           [value]="data.content"
+           [showCurrentPageReport]="true"
+           currentPageReportTemplate="{first} - {last} of {totalRecords}"
+           dataKey="id"
+           editMode="row"
+           responsiveLayout="scroll">
+
+    <ng-template let-columns pTemplate="header">
+      <tr class="col-12">
+        <th *ngFor="let col of columns" class="col-2">
+          {{ col.header }}
+        </th>
+        <th class="col-2 text-center">Ações</th>
+      </tr>
+    </ng-template>
+
+    <ng-template let-columns="columns" let-rowData pTemplate="body">
+      <tr class="col-12">
+
+        <td *ngFor="let col of columns" class="col-2">
+          <ng-container
+            *ngIf="col.type !== 'phone' && col.type !== 'ativo' && col.type !== 'comentario' && col.type !== 'status'">{{ rowData[col.field] }}
+          </ng-container>
+          <ng-container *ngIf="col.type === 'phone'">
+            {{  rowData[col.field] | cellPhone }}
+          </ng-container>
+          <ng-container *ngIf="col.type === 'ativo'">
+            {{ rowData[col.field] | active}}
+          </ng-container>
+          <ng-container *ngIf="col.type === 'comentario'">
+            <em class="bi bi-bell-fill status-modification-red" *ngIf="rowData[col.field]"></em>
+            <em class="bi bi-bell-fill status-concluido-green" *ngIf="!rowData[col.field]"></em>
+          </ng-container>
+          <ng-container *ngIf="col.type === 'status'">
+            {{ rowData[col.field] | status}}
+          </ng-container>
+        </td>
+
+        <td class="col-2">
+          <div class="flex align-items-center justify-content-center">
+            <ng-container *ngFor="let button of buttons">
+              <button *ngIf="button.permission && !validateActive(button, rowData)"
+                      pButton type="button"
+                      class="button-action-table p-button-text"
+                      icon="{{ button.icon }}"
+                      pTooltip="{{button.description}}"
+                      (click)="onButtonClick(button.action, rowData)">
+              </button>
+            </ng-container>
+          </div>
+        </td>
+
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [attr.colspan]="cols.length + ACTION_COLUMN_FIX">Nenhum dado encontrado</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>

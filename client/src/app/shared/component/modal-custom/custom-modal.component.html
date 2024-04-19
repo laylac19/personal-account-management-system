@@ -1,0 +1,44 @@
+<p-dialog [(visible)]="visible"
+          [closable]="true"
+          [draggable]="false"
+          [header]="header"
+          [modal]="true"
+          (onHide)="onCloseHandle()"
+          appendTo="body" styleClass="md:my-modal-width lg:my-modal-width xl:my-modal-width ">
+  <ng-container *ngTemplateOutlet="externalContent" class="flex"></ng-container>
+  <ng-template #externalContent>
+    <ng-content></ng-content>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="justify-content-between flex" *ngIf="!readonly">
+      <div>
+        <p-button [rounded]="true"
+                  class="button-action"
+                  icon="pi pi-times"
+                  iconPos="left"
+                  label="CANCELAR"
+                  (onClick)="onCloseHandle()">
+        </p-button>
+      </div>
+      <div>
+        <p-button class="button-action"
+                  icon="pi pi-save"
+                  iconPos="left"
+                  label="SALVAR"
+                  (onClick)="onSaveClick()">
+        </p-button>
+      </div>
+    </div>
+    <div *ngIf="readonly">
+      <div>
+        <p-button [rounded]="true"
+                  class="button-action"
+                  icon="pi pi-times"
+                  iconPos="left"
+                  label="FECHAR"
+                  (onClick)="onCloseHandle()">
+        </p-button>
+      </div>
+    </div>
+  </ng-template>
+</p-dialog>
