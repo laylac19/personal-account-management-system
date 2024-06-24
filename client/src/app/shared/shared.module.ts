@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
-import {CustomTableComponent} from "./component/custom-table/custom-table.component";
-import {CustomModalComponent} from "./component/modal-custom/custom-modal.component";
-import {ValidationMessageComponent} from "./component/validation-message/validation-message.component";
-import {LoadingComponent} from "./component/loading/loading.component";
+import {CustomTableComponent} from "./components/custom-table/custom-table.component";
+import {CustomModalComponent} from "./components/modal-custom/custom-modal.component";
+import {ValidationMessageComponent} from "./components/validation-message/validation-message.component";
+import {LoadingComponent} from "./components/loading/loading.component";
 import {PhonePipe} from "./utils/pipes/phone.pipe";
 import {ActivePipe} from "./utils/pipes/active.pipe";
 import {StatusPipe} from "./utils/pipes/status.pipe";
@@ -11,8 +11,8 @@ import {PRIMENG_IMPORTS} from "./imports/primeng-imports";
 import {CEPPipe} from "./utils/pipes/cep.pipe";
 import {CNPJPipe} from "./utils/pipes/cnpj.pipe";
 import {CPFPipe} from "./utils/pipes/cpf.pipe";
-import {BlockableDivComponent} from "./component/blockable-div/blockable-div.component";
-import {TopBarComponent} from "./component/top-bar/top-bar.component";
+import {BlockableDivComponent} from "./components/blockable-div/blockable-div.component";
+import {TopBarComponent} from "./components/top-bar/top-bar.component";
 
 export const SHARED_MODULE_DECLARATIONS: any[] = [
   CustomTableComponent,
