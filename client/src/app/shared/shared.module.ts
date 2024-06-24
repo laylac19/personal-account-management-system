@@ -13,6 +13,7 @@ import {CNPJPipe} from "./utils/pipes/cnpj.pipe";
 import {CPFPipe} from "./utils/pipes/cpf.pipe";
 import {BlockableDivComponent} from "./components/blockable-div/blockable-div.component";
 import {TopBarComponent} from "./components/top-bar/top-bar.component";
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 export const SHARED_MODULE_DECLARATIONS: any[] = [
   CustomTableComponent,
@@ -35,7 +36,8 @@ export const SHARED_MODULE_PRIVATE_DECLARATIONS: any[] = [];
 @NgModule({
   declarations: [
     SHARED_MODULE_DECLARATIONS,
-    SHARED_MODULE_PRIVATE_DECLARATIONS
+    SHARED_MODULE_PRIVATE_DECLARATIONS,
+    SidebarComponent
   ],
   imports: [
     ANGULAR_IMPORTS,
@@ -44,7 +46,8 @@ export const SHARED_MODULE_PRIVATE_DECLARATIONS: any[] = [];
   exports: [
     SHARED_MODULE_DECLARATIONS,
     ANGULAR_IMPORTS,
-    PRIMENG_IMPORTS
+    PRIMENG_IMPORTS,
+    SidebarComponent
   ],
   // providers: [
   //   {
